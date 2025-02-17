@@ -5,10 +5,12 @@
     align-items: center;
 }
 
-.navbar .logo{
-    width: 150;
-
-}
+.logo {
+    width: 280px;  /* Adjust width as needed */
+    height: auto;  /* Maintains aspect ratio */
+  }
+  
+  
 
 .navbar-menu{
     display: flex;
