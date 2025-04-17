@@ -1,21 +1,30 @@
 import express from 'express';
 import cors from 'cors';
+import sequelize from './config/db.js';
+import foodRouter from './routes/foodRoute.js';
 
-
-
-// app config
+// App config
 const app = express();
-const port = 4000
+const port = 4000;
 
-//middleware
-app.use(express.json())
-app.use(cors())
+// Middleware
+app.use(express.json());
+app.use(cors());
 
-app.get("/" ,(req,res)=> {
-    res.send("API Working")
-})
+// Test route
+app.get("/", (req, res) => {
+    res.send("API Working");
+});
 
-//run the server now
-app.listen(port,()=>{
-    console.log(`Server is running on http://localhost:${port}`)
-})
+// API endpoints
+app.use("/api/food", foodRouter);
+
+// Database connection and server start
+sequelize.authenticate()
+  .then(() => {
+    console.log('✅ Database connected');
+    app.listen(port, () => {
+      console.log(`🚀 Server is running on http://localhost:${port}`);
+    });
+  })
+  .catch(err => console.error('❌ Connection error:', err));
