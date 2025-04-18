@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
 
 // API endpoints
 app.use("/api/food", foodRouter);
+app.use("/images", express.static("uploads")); //upload the image UI
+
 
 // Database connection and server start
 sequelize.authenticate()

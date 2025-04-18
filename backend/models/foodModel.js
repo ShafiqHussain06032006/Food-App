@@ -2,6 +2,11 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/db.js';
 
 const foodModel = sequelize.models.foodModel || sequelize.define('foodModel', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true, // ✅ Automatically increases
+    primaryKey: true,     // ✅ Acts as the unique ID
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
