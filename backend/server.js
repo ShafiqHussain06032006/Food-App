@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import sequelize from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
+import userRouter from './routes/userRoute.js';
+import 'dotenv/config'
 
 // App config
 const app = express();
@@ -19,6 +21,7 @@ app.get("/", (req, res) => {
 // API endpoints
 app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads")); //upload the image UI
+app.use("/api/user",userRouter)
 
 
 // Database connection and server start
